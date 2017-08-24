@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Form1";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>My Form Registration</h2>
+
+@*@{int x = 15;
+    if (x > 10)
+    {
+        <h1>X is Grater than 10</h1>
+
+        }
+}*@
+
+@*@{
+    var welcomeMessage = "";
+    if (IsPost)
+    {
+        var id = Request["id"];
+        var name = Request["name"];
+        var age = Request["age"];
+        var mobile = Request["mobile"];
+        welcomeMessage = "Welcome  " + name;
+    }
+}*@
+
+<p>This is my firsts web form </p>
+
+<form method="post" action="/Home/Form1">
+ 
+    id <input type="text" id="id" name="id" />
+    Name <input type="text" id="name" name="name"  />
+    SurName<input type="text" id="surename" name="surname"  />
+    Gender<input type="text" id="gender" name="gender" />
+    Age<input type="text" id="age" name="age" />
+    Mobile<input type="text" id="mobile" name="mobile" />
+    <input type="submit" value="Post Send" />
+
+</form>
+@*<p>@welcomeMessage</p>*@
+<p>@ViewBag.Message</p>

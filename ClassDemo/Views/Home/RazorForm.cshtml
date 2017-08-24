@@ -1,0 +1,117 @@
+﻿
+@{
+    ViewBag.Title = "RazorForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-2">
+        <p>
+            <h2>Tracker Item</h2>
+            @ViewBag.Message
+        </p>
+
+    </div>
+</div>
+
+@using (Html.BeginForm("RazorForm", "Home"))
+{
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-2">
+                <p>
+                    <label for="ID">
+                        Item ID:
+                    </label><br>
+                    @Html.TextBox("ItemID")
+                </p>
+                <p>
+                    <label for="Summary">
+                        Summary:
+                    </label><br>
+                    @Html.TextArea("Summary")
+                </p>
+                <p>
+                    <label for="Category">
+                        Item Category:
+                    </label><br>
+                    @Html.DropDownList("CategoryId", (IEnumerable<SelectListItem>)ViewBag.CategoryId, "--Select Item Category--", new { @class = "Category" })
+                </p>
+                <p>
+                    <label for="Type">
+                        Item Type:
+                    </label><br>
+                    @Html.DropDownList("ItemTypeId", (IEnumerable<SelectListItem>)ViewBag.ItemTypeId, "--Select Type--", new { @class = "Type" })
+                </p>
+                <p>
+                    <label for="Priority">
+                        Priority:
+                    </label><br>
+                    <select id="Priority" name="Priority">
+                        <option value="0">-- Select Priority --</option>
+                        <option value="1"> Urgent </option>
+                        <option value="2"> High </option>
+                        <option value="3">  Medium </option>
+                        <option value="4"> Low </option>
+
+                    </select>
+                </p>
+
+
+            </div>
+            <div class="col-md-6">
+                <p>
+                    <label for="ID">
+                        Date:
+                    </label><br>
+                    @Html.TextBox("ItemCreatedDate", null, new { @class = "form-control" })
+                </p>
+                <p>
+                    <label for="ID">
+                        Created By:
+                    </label><br>
+                    @Html.TextBox("ItemID", null, new { @class = "form-control" })
+                </p>
+                <p>
+                    <label for="ID">
+                        Owner:
+                    </label><br>
+                    @Html.TextBox("ItemID", null, new { @class = "form-control" })
+                </p>
+
+                <p>
+                    <label for="ID">
+                        Imapct:
+                    </label><br>
+                    @Html.TextArea("ItemID", null, new { @class = "form-control" })
+                </p>
+                <p>
+                    <label for="ID">
+                        Resolution:
+                    </label><br>
+                    @Html.TextArea("ItemID", null, new { @class = "form-control" })
+                </p>
+                <p>
+                    <label for="ID">
+                        Resolved:
+                    </label><br>
+                    @Html.TextBox("ItemID", null, new { @class = "form-control" })
+                </p>
+
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-6">
+                <p>
+                    <input type="submit" value="Add" class="btn-primary" />
+                </p>
+
+            </div>
+        </div>
+    </div>
+ }
+
+  
+
