@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ClassDemo.Models;
 
 namespace ClassDemo.Controllers
 {
@@ -53,8 +54,11 @@ namespace ClassDemo.Controllers
         }
         public ActionResult RazorForm()
         {
-            ViewBag.CategoryId = new SelectList(GetItemCategories(), "CategoryId", "CategoryName");
-            ViewBag.ItemTypeId = new SelectList(GetItemTypes(), "ItemTypeId", "ItemName");
+            ItemCategory itmCatg = new ItemCategory();
+            ItemType itmTy = new ItemType();
+
+            ViewBag.CategoryId = new SelectList(itmCatg.GetItemCategories(), "CategoryId", "CategoryName");
+            ViewBag.ItemTypeId = new SelectList(itmTy.GetItemTypes(), "ItemTypeId", "ItemName");
 
             return View();
         }
@@ -64,53 +68,31 @@ namespace ClassDemo.Controllers
             var CategoryId = frm["CategoryId"];
             var ItemTypeId = frm["ItemTypeId"];
             var Priority = frm["Priority"];
+            var Summary = frm["Summary"];
+
+
+            TrackerItem ti = new TrackerItem();
+            ti.ItemSummary = Summary;
+           
+            ti.Add(ti);
 
 
             ViewBag.Message = "Item has created successfully.";
 
-            ViewBag.CategoryId = new SelectList(GetItemCategories(), "CategoryId", "CategoryName");
-            ViewBag.ItemTypeId = new SelectList(GetItemTypes(), "ItemTypeId", "ItemName");
+            ItemCategory itmCatg = new ItemCategory();
+            ItemType itmTy = new ItemType();
+
+            ViewBag.CategoryId = new SelectList(itmCatg.GetItemCategories(), "CategoryId", "CategoryName");
+            ViewBag.ItemTypeId = new SelectList(itmTy.GetItemTypes(), "ItemTypeId", "ItemName");
 
             return View();
         }
 
 
-       // Helper Methods
-        private List<ItemCategoty> GetItemCategories()
-        {
-            List<ItemCategoty> lstcat = new List<ItemCategoty>();
-            lstcat.Add(new ItemCategoty { CategoryId = 1, CategoryName = "Analysis" });
-            lstcat.Add(new ItemCategoty { CategoryId = 2, CategoryName = "Development" });
-            lstcat.Add(new ItemCategoty { CategoryId = 3, CategoryName = "Testing" });
-            return lstcat;
-        }
+   
 
-        private List<ItemType> GetItemTypes()
-        {
-            List<ItemType> lstty = new List<ItemType>();
-            lstty.Add(new ItemType { ItemTypeId = 1, ItemName = "Backlog" });
-            lstty.Add(new ItemType { ItemTypeId = 2, ItemName = "Action" });
-            lstty.Add(new ItemType { ItemTypeId = 3, ItemName = "Issue" });
-            return lstty;
-        }
-
+       
 
     }
-
-
-    // Objects
-    public class ItemCategoty
-    {
-        public int CategoryId { set; get; }
-        public string CategoryName { set; get; }
-    }
-
-    public class ItemType
-    {
-        public int ItemTypeId { set; get; }
-        public string ItemName { set; get; }
-
-    }
-
-
+ 
 }
