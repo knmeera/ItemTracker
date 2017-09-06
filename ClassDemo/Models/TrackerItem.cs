@@ -18,7 +18,16 @@ namespace ClassDemo.Models
         public ItemCategory ItemCategory { set; get; }
         public ItemType ItemType { set; get; }
 
+        public DateTime Date { set; get; }
 
+        public string CreatedBy { set; get; }
+
+        public string Ower { set; get; }
+
+        public string Impact { set; get; }
+
+        public string Resolution { set; get; }
+        public string Resolved { set; get; }
         public List<TrackerItem> GetTrackerItems()
         {
              return lstItems;
