@@ -69,8 +69,12 @@ namespace ClassDemo.Controllers
             var ItemTypeId = frm["ItemTypeId"];
             var Priority = frm["Priority"];
             var Summary = frm["Summary"];
-
-
+            var Date = frm["ItemCreatedDate"];
+            var CreatedBy = frm["CreatedByID"];
+            var Owner = frm["OwnerID"];
+            var Imapct = frm["ImapctID"];
+            var Resolution = frm["ResolutionID"];
+            var Resolved =frm["ResolvedID"];
             TrackerItem ti = new TrackerItem();
             ti.ItemSummary = Summary;
            
