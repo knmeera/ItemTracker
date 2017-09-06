@@ -1,8 +1,10 @@
 ﻿
 @{
+
     ViewBag.Title = "RazorForm";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@model ClassDemo.Models.TrackerItem
 
 <div class="row">
     <div class="col-md-6 col-md-offset-2">
@@ -25,24 +27,25 @@
                         Item ID:
                     </label><br>
                     @Html.TextBox("ItemID")
+                    @Html.ValidationMessageFor(model => model.ItemId)
                 </p>
                 <p>
                     <label for="Summary">
                         Summary:
                     </label><br>
-                    @Html.TextArea("Summary")
+                    @Html.TextArea("ItemSummary")
                 </p>
                 <p>
                     <label for="Category">
                         Item Category:
                     </label><br>
-                    @Html.DropDownList("CategoryId", (IEnumerable<SelectListItem>)ViewBag.CategoryId, "--Select Item Category--", new { @class = "Category" })
+                    @Html.DropDownList("ItemCategory", (IEnumerable<SelectListItem>)ViewBag.CategoryId, "--Select Item Category--", new { @class = "Category" })
                 </p>
                 <p>
                     <label for="Type">
                         Item Type:
                     </label><br>
-                    @Html.DropDownList("ItemTypeId", (IEnumerable<SelectListItem>)ViewBag.ItemTypeId, "--Select Type--", new { @class = "Type" })
+                    @Html.DropDownList("ItemType", (IEnumerable<SelectListItem>)ViewBag.ItemTypeId, "--Select Type--", new { @class = "Type" })
                 </p>
                 <p>
                     <label for="Priority">
@@ -77,25 +80,25 @@
                     <label for="ID">
                         Owner:
                     </label><br>
-                    @Html.TextBox("OwnerID", null, new { @class = "form-control" })
+                    @Html.TextBox("Owner", null, new { @class = "form-control" })
                 </p>
                 <p>
                     <label for="ID">
                         Imapct:
                     </label><br>
-                    @Html.TextArea("ImapctID", null, new { @class = "form-control" })
+                    @Html.TextArea("Imapct", null, new { @class = "form-control" })
                 </p>
                 <p>
                     <label for="ID">
                         Resolution:
                     </label><br>
-                    @Html.TextArea("ResolutionID", null, new { @class = "form-control" })
+                    @Html.TextArea("Resolution", null, new { @class = "form-control" })
                 </p>
                 <p>
                     <label for="ID">
                         Resolved:
                     </label><br>
-                    @Html.TextBox("ResolvedID", null, new { @class = "form-control" })
+                    @Html.TextBox("Resolved", null, new { @class = "form-control" })
                 </p>
 
             </div>

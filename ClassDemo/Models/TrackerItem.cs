@@ -12,22 +12,18 @@ namespace ClassDemo.Models
 
         public int ItemId { set; get; }
         public string ItemSummary { set; get; }
-
-
-        // Reference to other types
-        public ItemCategory ItemCategory { set; get; }
-        public ItemType ItemType { set; get; }
-
-        public DateTime Date { set; get; }
-
-        public string CreatedBy { set; get; }
-
-        public string Ower { set; get; }
-
+        public int ItemCategory { set; get; }
+        public int ItemType { set; get; }
+        public string Priority { set; get; }
+        public DateTime ItemCreatedDate { set; get; }
+        public string CreatedByID { set; get; }
+        public string Owner { set; get; }
         public string Impact { set; get; }
-
         public string Resolution { set; get; }
         public string Resolved { set; get; }
+
+
+
         public List<TrackerItem> GetTrackerItems()
         {
              return lstItems;
