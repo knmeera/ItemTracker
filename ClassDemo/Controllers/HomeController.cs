@@ -63,7 +63,7 @@ namespace ClassDemo.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult RazorForm(FormCollection frm)
+        public ActionResult RazorForm(TrackerItem itm, FormCollection frm)
         {
             var CategoryId = frm["CategoryId"];
             var ItemTypeId = frm["ItemTypeId"];
@@ -75,13 +75,23 @@ namespace ClassDemo.Controllers
             var Imapct = frm["ImapctID"];
             var Resolution = frm["ResolutionID"];
             var Resolved =frm["ResolvedID"];
-            TrackerItem ti = new TrackerItem();
-            ti.ItemSummary = Summary;
-           
-            ti.Add(ti);
+
+            if (ValidateForm(itm)){
+                // Success
+
+                TrackerItem ti = new TrackerItem();
+                ti.ItemSummary = Summary;
+                ti.Add(ti);
 
 
-            ViewBag.Message = "Item has created successfully.";
+                ViewBag.Message = "Item has created successfully.";
+            }
+            else
+            {
+                //Error
+                ViewBag.Message = "There are errors in creating Item.";
+            }
+
 
             ItemCategory itmCatg = new ItemCategory();
             ItemType itmTy = new ItemType();
@@ -93,9 +103,16 @@ namespace ClassDemo.Controllers
         }
 
 
-   
+        // this the validation method
+        private bool ValidateForm(TrackerItem itm)
+        {
 
-       
+            if (itm.ItemId == null || itm.ItemId  == 0)
+                ModelState.AddModelError("ItemId", "Please enter Item Id.");
+
+            return ModelState.IsValid;
+        }
+
 
     }
  
