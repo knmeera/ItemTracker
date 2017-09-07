@@ -26,7 +26,7 @@
                     <label for="ID">
                         Item ID:
                     </label><br>
-                    @Html.TextBox("ItemID")
+                    @Html.TextBox("ItemId")
                     @Html.ValidationMessageFor(model => model.ItemId)
                 </p>
                 <p>
@@ -34,18 +34,19 @@
                         Summary:
                     </label><br>
                     @Html.TextArea("ItemSummary")
+                    @Html.ValidationMessageFor(model => model.ItemSummary)
                 </p>
                 <p>
                     <label for="Category">
                         Item Category:
                     </label><br>
-                    @Html.DropDownList("ItemCategory", (IEnumerable<SelectListItem>)ViewBag.CategoryId, "--Select Item Category--", new { @class = "Category" })
+                    @Html.DropDownList("ItemCategory", (IEnumerable<SelectListItem>)ViewBag.CategoryVB, "--Select Item Category--", new { @class = "Category" })
                 </p>
                 <p>
                     <label for="Type">
                         Item Type:
                     </label><br>
-                    @Html.DropDownList("ItemType", (IEnumerable<SelectListItem>)ViewBag.ItemTypeId, "--Select Type--", new { @class = "Type" })
+                    @Html.DropDownList("ItemType", (IEnumerable<SelectListItem>)ViewBag.ItemTypeVB, "--Select Type--", new { @class = "Type" })
                 </p>
                 <p>
                     <label for="Priority">
@@ -69,36 +70,42 @@
                         Date:
                     </label><br>
                     @Html.TextBox("ItemCreatedDate", null, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ItemCreatedDate)
                 </p>
                 <p>
                     <label for="ID">
                         Created By:
                     </label><br>
-                    @Html.TextBox("CreatedByID", null, new { @class = "form-control" })
+                    @Html.TextBox("CreatedBy", null, new { @class = "form-control" })
+                   @Html.ValidationMessageFor(model => model.CreatedBy)
                 </p>
                 <p>
                     <label for="ID">
                         Owner:
                     </label><br>
                     @Html.TextBox("Owner", null, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Owner)
                 </p>
                 <p>
                     <label for="ID">
                         Imapct:
                     </label><br>
-                    @Html.TextArea("Imapct", null, new { @class = "form-control" })
+                    @Html.TextArea("Impact", null, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Impact)
                 </p>
                 <p>
                     <label for="ID">
                         Resolution:
                     </label><br>
                     @Html.TextArea("Resolution", null, new { @class = "form-control" })
+                   @Html.ValidationMessageFor(model => model.Resolution)
                 </p>
                 <p>
                     <label for="ID">
                         Resolved:
                     </label><br>
                     @Html.TextBox("Resolved", null, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Resolved)
                 </p>
 
             </div>
