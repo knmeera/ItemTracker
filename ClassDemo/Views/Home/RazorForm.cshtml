@@ -11,6 +11,9 @@
         <p>
             <h2>Tracker Item</h2>
             @ViewBag.Message
+        
+          
+            
         </p>
 
     </div>
@@ -58,8 +61,8 @@
                         <option value="2"> High </option>
                         <option value="3">  Medium </option>
                         <option value="4"> Low </option>
-
                     </select>
+                    @Html.ValidationMessageFor(model => model.Priority)
                 </p>
 
 

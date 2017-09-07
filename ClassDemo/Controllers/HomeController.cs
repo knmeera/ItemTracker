@@ -65,7 +65,6 @@ namespace ClassDemo.Controllers
         [HttpPost]
         public ActionResult RazorForm(TrackerItem itm)
         {
-           
             //var ItemCategory = frm["ItemCategory"];
            // var CategoryId = frm["CategoryId"];
             //var ItemTypeId = frm["ItemType"];
@@ -77,7 +76,6 @@ namespace ClassDemo.Controllers
             //var Imapct = frm["Imapct"];
             //var Resolution = frm["Resolution"];
             //var Resolved =frm["Resolved"];
-           
             if (ValidateForm(itm))
             {
                 // Success
@@ -113,9 +111,14 @@ namespace ClassDemo.Controllers
 
             if (itm.ItemId == 0)
                 ModelState.AddModelError("ItemId", "Please enter Item Id.");
-        else if (itm.ItemSummary == null )
+            else if (itm.ItemSummary == null )
                 ModelState.AddModelError("ItemSummary", "Please enter ItemSummary");
-           
+            else if (itm.ItemCategory==0)
+                ModelState.AddModelError("ItemCategory", "Please enter ItemCategory");
+            else if (itm.ItemType == 0)
+                ModelState.AddModelError("ItemType", "Please enter ItemCategory");
+            else if (itm.Priority == "0")
+                ModelState.AddModelError("Priority", "Please enter Priority");
           else if (itm.ItemCreatedDate== null)
                 ModelState.AddModelError("ItemCreatedDate", "Please enter Date");
             else if (itm.CreatedBy == null)
