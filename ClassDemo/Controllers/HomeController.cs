@@ -57,30 +57,31 @@ namespace ClassDemo.Controllers
             ItemCategory itmCatg = new ItemCategory();
             ItemType itmTy = new ItemType();
 
-            ViewBag.CategoryId = new SelectList(itmCatg.GetItemCategories(), "CategoryId", "CategoryName");
-            ViewBag.ItemTypeId = new SelectList(itmTy.GetItemTypes(), "ItemTypeId", "ItemName");
+            ViewBag.CategoryVB = new SelectList(itmCatg.GetItemCategories(), "CategoryId", "CategoryName");
+            ViewBag.ItemTypeVB = new SelectList(itmTy.GetItemTypes(), "ItemTypeId", "ItemName");
 
             return View();
         }
         [HttpPost]
-        public ActionResult RazorForm(TrackerItem itm, FormCollection frm)
+        public ActionResult RazorForm(TrackerItem itm)
         {
-            var CategoryId = frm["CategoryId"];
-            var ItemTypeId = frm["ItemTypeId"];
-            var Priority = frm["Priority"];
-            var Summary = frm["Summary"];
-            var Date = frm["ItemCreatedDate"];
-            var CreatedBy = frm["CreatedByID"];
-            var Owner = frm["OwnerID"];
-            var Imapct = frm["ImapctID"];
-            var Resolution = frm["ResolutionID"];
-            var Resolved =frm["ResolvedID"];
-
-            if (ValidateForm(itm)){
+            //var ItemCategory = frm["ItemCategory"];
+           // var CategoryId = frm["CategoryId"];
+            //var ItemTypeId = frm["ItemType"];
+            //var Priority = frm["Priority"];
+            
+            //var ItemCreatedDate = frm["ItemCreatedDate"];
+            //var CreatedBy = frm["CreatedBy"];
+            //var Owner = frm["Owner"];
+            //var Imapct = frm["Imapct"];
+            //var Resolution = frm["Resolution"];
+            //var Resolved =frm["Resolved"];
+            if (ValidateForm(itm))
+            {
                 // Success
 
                 TrackerItem ti = new TrackerItem();
-                ti.ItemSummary = Summary;
+                ti.ItemSummary = itm.ItemSummary;
                 ti.Add(ti);
 
 
@@ -96,8 +97,9 @@ namespace ClassDemo.Controllers
             ItemCategory itmCatg = new ItemCategory();
             ItemType itmTy = new ItemType();
 
-            ViewBag.CategoryId = new SelectList(itmCatg.GetItemCategories(), "CategoryId", "CategoryName");
-            ViewBag.ItemTypeId = new SelectList(itmTy.GetItemTypes(), "ItemTypeId", "ItemName");
+
+            ViewBag.CategoryVB = new SelectList(itmCatg.GetItemCategories(), "CategoryId", "CategoryName");
+            ViewBag.ItemTypeVB = new SelectList(itmTy.GetItemTypes(), "ItemTypeId", "ItemName");
 
             return View();
         }
@@ -107,13 +109,32 @@ namespace ClassDemo.Controllers
         private bool ValidateForm(TrackerItem itm)
         {
 
-            if (itm.ItemId == null || itm.ItemId  == 0)
+            if (itm.ItemId == 0)
                 ModelState.AddModelError("ItemId", "Please enter Item Id.");
-
+            else if (itm.ItemSummary == null )
+                ModelState.AddModelError("ItemSummary", "Please enter ItemSummary");
+            else if (itm.ItemCategory==0)
+                ModelState.AddModelError("ItemCategory", "Please enter ItemCategory");
+            else if (itm.ItemType == 0)
+                ModelState.AddModelError("ItemType", "Please enter ItemCategory");
+            else if (itm.Priority == "0")
+                ModelState.AddModelError("Priority", "Please enter Priority");
+          else if (itm.ItemCreatedDate== null)
+                ModelState.AddModelError("ItemCreatedDate", "Please enter Date");
+            else if (itm.CreatedBy == null)
+                ModelState.AddModelError("CreatedBy", "Please enter CreatedBy");
+            else if (itm.Owner== null)
+                ModelState.AddModelError("Owner", "Please enter Owner");
+            else if (itm.Impact == null)
+                ModelState.AddModelError("Impact", "Please enter Impact");
+            else if (itm.Resolution == null)
+                ModelState.AddModelError("Resolution", "Please enter Resolution");
+            else if (itm.Resolved == null)
+                ModelState.AddModelError("Resolved", "Please enter Resolved");
             return ModelState.IsValid;
         }
-
-
+       
+        
     }
  
 }
