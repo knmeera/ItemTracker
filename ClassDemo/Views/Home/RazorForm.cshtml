@@ -27,16 +27,16 @@
             <div class="col-md-4 col-md-offset-2">
                 <p>
                     <label for="ID">
-                        Item ID:
+                        Item ID: 
                     </label><br>
-                    @Html.TextBox("ItemId")
+                    @Html.TextBox("ItemId", null, new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.ItemId)
                 </p>
                 <p>
                     <label for="Summary">
                         Summary:
                     </label><br>
-                    @Html.TextArea("ItemSummary")
+                    @Html.TextArea("ItemSummary", null, new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.ItemSummary)
                 </p>
                 <p>
