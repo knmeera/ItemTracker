@@ -119,7 +119,7 @@ namespace ClassDemo.Controllers
                 ModelState.AddModelError("ItemType", "Please enter ItemCategory");
             else if (itm.Priority == "0")
                 ModelState.AddModelError("Priority", "Please enter Priority");
-          else if (itm.ItemCreatedDate== null)
+            else if (itm.ItemCreatedDate== null)
                 ModelState.AddModelError("ItemCreatedDate", "Please enter Date");
             else if (itm.CreatedBy == null)
                 ModelState.AddModelError("CreatedBy", "Please enter CreatedBy");
