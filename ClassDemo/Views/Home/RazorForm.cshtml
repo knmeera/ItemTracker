@@ -72,14 +72,14 @@
                     <label for="ID">
                         Date:
                     </label><br>
-                    @Html.TextBox("ItemCreatedDate", "DD / MM / YYYY", new { @class = "form-control" })
+                    @Html.TextBox("ItemCreatedDate", null, new { @placeholder = "DD/MM/YYYY",@class = "form-control" })
                     @Html.ValidationMessageFor(model => model.ItemCreatedDate)
                 </p>
                 <p>
                     <label for="ID">
                         End Date:
                     </label><br>
-                    @Html.TextBox("ItemCreatedEndDate", "DD / MM / YYYY", new { @class = "form-control" })
+                    @Html.TextBox("ItemCreatedEndDate", null, new { @placeholder = "DD/MM/YYYY",@class = "form-control" })
                    
                 </p>
                 <p>
