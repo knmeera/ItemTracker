@@ -72,19 +72,19 @@
                     <label for="ID">
                         Date:
                     </label><br>
-                    @Html.TextBox("ItemCreatedDate", null, new { @class = "form-control" })
+                    @Html.TextBox("ItemCreatedDate", "DD / MM / YYYY", new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.ItemCreatedDate)
                 </p>
                 <p>
                     <label for="ID">
                         End Date:
                     </label><br>
-                    @Html.TextBox("ItemCreatedEndDate", null, new { @class = "form-control" })
+                    @Html.TextBox("ItemCreatedEndDate", "DD / MM / YYYY", new { @class = "form-control" })
                    
                 </p>
                 <p>
                     <label for="ID">
-                        %workCompleted:
+                        Work Completed:
                     </label><br>
                     @Html.TextBox("workCompleted", null, new { @class = "form-control" })
                 </p>
@@ -111,7 +111,7 @@
                 </p>
                 <p>
                     <label for="ID">
-                        Imapct:
+                        Impact:
                     </label><br>
                     @Html.TextArea("Impact", null, new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.Impact)
