@@ -19,7 +19,7 @@
     </div>
 </div>
 
-@using (Html.BeginForm("RazorForm", "Home"))
+@using (Html.BeginForm("RazorForm", "Home", FormMethod.Post, new { id = "myForm" }))
 {
 
     <div class="container">
@@ -77,6 +77,26 @@
                 </p>
                 <p>
                     <label for="ID">
+                        End Date:
+                    </label><br>
+                    @Html.TextBox("ItemCreatedEndDate", null, new { @class = "form-control" })
+                   
+                </p>
+                <p>
+                    <label for="ID">
+                        %workCompleted:
+                    </label><br>
+                    @Html.TextBox("workCompleted", null, new { @class = "form-control" })
+                </p>
+                <p>
+                    <label for="ID">
+                        Status:
+                    </label><br>
+                    @Html.TextBox("Status", null, new { @class = "form-control" })
+
+                </p>
+                <p>
+                    <label for="ID">
                         Created By:
                     </label><br>
                     @Html.TextBox("CreatedBy", null, new { @class = "form-control" })
@@ -110,9 +130,10 @@
                     @Html.TextBox("Resolved", null, new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.Resolved)
                 </p>
-
+                <p>
+                </p>
             </div>
-
+            
         </div>
         <div class="row">
             <div class="col-md-4 col-md-offset-6">
@@ -121,9 +142,24 @@
                 </p>
 
             </div>
+          
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-6">
+                <p>
+                    <input type="button" onclick="myFunction()" value="Reset form" class=" btn-primary" />
+                    
+                </p>
+
+            </div>
+
         </div>
     </div>
- }
-
+}
+<script>
+    function myFunction() {
+        document.getElementById("myForm").reset();
+    }
+</script>
   
 
