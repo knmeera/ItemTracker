@@ -43,56 +43,59 @@
                     <label for="Category">
                         Item Category:
                     </label><br>
-                    @Html.DropDownList("ItemCategory", (IEnumerable<SelectListItem>)ViewBag.CategoryVB, "--Select Item Category--", new { @class = "Category" })
+                    @Html.DropDownList("ItemCategory", (IEnumerable<SelectListItem>)ViewBag.CategoryVB, "--Select Item Category--", new { @class = "form-control" })
                 </p>
                 <p>
                     <label for="Type">
                         Item Type:
                     </label><br>
-                    @Html.DropDownList("ItemType", (IEnumerable<SelectListItem>)ViewBag.ItemTypeVB, "--Select Type--", new { @class = "Type" })
+                    @Html.DropDownList("ItemType", (IEnumerable<SelectListItem>)ViewBag.ItemTypeVB, "--Select Type--", new { @class = "form-control" })
                 </p>
                 <p>
                     <label for="Priority">
                         Priority:
                     </label><br>
-                    <select id="Priority" name="Priority">
-                        <option value="0">-- Select Priority --</option>
-                        <option value="1"> Urgent </option>
-                        <option value="2"> High </option>
-                        <option value="3">  Medium </option>
-                        <option value="4"> Low </option>
-                    </select>
-                    @Html.ValidationMessageFor(model => model.Priority)
+                    @Html.DropDownList("ItemPriority", (IEnumerable<SelectListItem>)ViewBag.ItemPriorityVB, "--Select Type--", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ItemPriority)
                 </p>
-
-
-            </div>
-            <div class="col-md-6">
                 <p>
                     <label for="ID">
-                        Date:
+                        Start Date:
                     </label><br>
                     @Html.TextBox("ItemCreatedDate", null, new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.ItemCreatedDate)
                 </p>
                 <p>
                     <label for="ID">
-                        End Date:
+                        Assigned Date:
                     </label><br>
-                    @Html.TextBox("ItemCreatedEndDate", null, new { @class = "form-control" })
-                   
+                    @Html.TextBox("AssignedDate", null, new { @class = "form-control" })
+                    @*@Html.ValidationMessageFor(model => model.AssignedDate)*@
                 </p>
                 <p>
                     <label for="ID">
-                        %workCompleted:
+                        End Date:
                     </label><br>
-                    @Html.TextBox("workCompleted", null, new { @class = "form-control" })
+                    @Html.TextBox("ItemEndDate", null, new { @class = "form-control" })
+                    @*@Html.ValidationMessageFor(model => model.ItemEndDate)*@
+                </p>
+
+            </div>
+            <div class="col-md-6">
+               
+                <p>
+                    <label for="ID">
+                        % WorkCompleted:
+                    </label><br>
+                    @Html.TextBox("workCompleted", null, new { @class = "form-control", Value = "0" })
+                    
                 </p>
                 <p>
                     <label for="ID">
                         Status:
                     </label><br>
-                    @Html.TextBox("Status", null, new { @class = "form-control" })
+                  @Html.DropDownList("ItemStatus", (IEnumerable<SelectListItem>)ViewBag.ItemStatusVB, "--Select Type--", new { @class = "form-control" })
+                     
 
                 </p>
                 <p>
@@ -107,21 +110,21 @@
                         Owner:
                     </label><br>
                     @Html.TextBox("Owner", null, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Owner)
+                    @*@Html.ValidationMessageFor(model => model.Owner)*@
                 </p>
                 <p>
                     <label for="ID">
-                        Imapct:
+                        Impact:
                     </label><br>
                     @Html.TextArea("Impact", null, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Impact)
+                    @*@Html.ValidationMessageFor(model => model.Impact)*@
                 </p>
                 <p>
                     <label for="ID">
                         Resolution:
                     </label><br>
                     @Html.TextArea("Resolution", null, new { @class = "form-control" })
-                   @Html.ValidationMessageFor(model => model.Resolution)
+                   @*@Html.ValidationMessageFor(model => model.Resolution)*@
                 </p>
                 <p>
                     <label for="ID">
@@ -136,30 +139,29 @@
             
         </div>
         <div class="row">
-            <div class="col-md-4 col-md-offset-6">
+            <div class="col-md-4">
                 <p>
-                    <input type="submit" value="Add" class="btn-primary" />
-                </p>
-
-            </div>
-          
-        </div>
-        <div class="row">
-            <div class="col-md-4 col-md-offset-6">
-                <p>
-                    <input type="button" onclick="myFunction()" value="Reset form" class=" btn-primary" />
                     
                 </p>
 
             </div>
+            <div class="col-md-4">
+                <p>
+                    <input type="submit" value="Add" class="btn-primary" />&nbsp<input type="button" onclick="myFunction()" value="Reset form" class=" btn-primary" />
+                </p>
+                <div class="col-md-4">
+                    <p>
+                        
+                    </p>
 
+                </div>
+            </div>
+          
         </div>
+      
     </div>
 }
-<script>
-    function myFunction() {
-        document.getElementById("myForm").reset();
-    }
-</script>
+
+
   
 

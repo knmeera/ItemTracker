@@ -56,15 +56,19 @@ namespace ClassDemo.Controllers
         {
             ItemCategory itmCatg = new ItemCategory();
             ItemType itmTy = new ItemType();
+            ItemStatus itmSts = new ItemStatus();
+            ItemPriority itmPry = new ItemPriority();
 
             ViewBag.CategoryVB = new SelectList(itmCatg.GetItemCategories(), "CategoryId", "CategoryName");
             ViewBag.ItemTypeVB = new SelectList(itmTy.GetItemTypes(), "ItemTypeId", "ItemName");
+            ViewBag.ItemStatusVB = new SelectList(itmSts.GetItemStatus(), "ItemStatusId", "ItemStatusName");
+            ViewBag.ItemPriorityVB = new SelectList(itmPry.GetItemPriority(), "PriorityId", "PriorityName");
 
             return View();
         }
         [HttpPost]
         public ActionResult RazorForm(TrackerItem itm)
-        {
+           {
             //var ItemCategory = frm["ItemCategory"];
            // var CategoryId = frm["CategoryId"];
             //var ItemTypeId = frm["ItemType"];
@@ -96,11 +100,13 @@ namespace ClassDemo.Controllers
 
             ItemCategory itmCatg = new ItemCategory();
             ItemType itmTy = new ItemType();
-
+            ItemStatus itmSts = new ItemStatus();
+            ItemPriority itmPry = new ItemPriority();
 
             ViewBag.CategoryVB = new SelectList(itmCatg.GetItemCategories(), "CategoryId", "CategoryName");
             ViewBag.ItemTypeVB = new SelectList(itmTy.GetItemTypes(), "ItemTypeId", "ItemName");
-
+            ViewBag.ItemStatusVB = new SelectList(itmSts.GetItemStatus(), "ItemStatusId", "ItemStatusName");
+            ViewBag.ItemPriorityVB = new SelectList(itmPry.GetItemPriority(), "PriorityId", "PriorityName");
             return View();
         }
 
@@ -117,20 +123,27 @@ namespace ClassDemo.Controllers
                 ModelState.AddModelError("ItemCategory", "Please enter ItemCategory");
             else if (itm.ItemType == 0)
                 ModelState.AddModelError("ItemType", "Please enter ItemCategory");
-            else if (itm.Priority == "0")
+            else if (itm.ItemPriority== "0")
                 ModelState.AddModelError("Priority", "Please enter Priority");
+
           else if (itm.ItemCreatedDate== null)
                 ModelState.AddModelError("ItemCreatedDate", "Please enter Date");
+            //else if (itm.AssignedDate == null)
+            //    ModelState.AddModelError("AssignedDate", "Please enter AssignedDate");
+            //else if (itm.ItemEndDate == null)
+            //    ModelState.AddModelError("ItemEndDate", "Please enter ItemEndDate");
+
+
             else if (itm.CreatedBy == null)
                 ModelState.AddModelError("CreatedBy", "Please enter CreatedBy");
-            else if (itm.Owner== null)
-                ModelState.AddModelError("Owner", "Please enter Owner");
-            else if (itm.Impact == null)
-                ModelState.AddModelError("Impact", "Please enter Impact");
-            else if (itm.Resolution == null)
-                ModelState.AddModelError("Resolution", "Please enter Resolution");
-            else if (itm.Resolved == null)
-                ModelState.AddModelError("Resolved", "Please enter Resolved");
+            //else if (itm.Owner== null)
+            //    ModelState.AddModelError("Owner", "Please enter Owner");
+            //else if (itm.Impact == null)
+            //    ModelState.AddModelError("Impact", "Please enter Impact");
+            //else if (itm.Resolution == null)
+            //    ModelState.AddModelError("Resolution", "Please enter Resolution");
+            //else if (itm.Resolved == null)
+            //    ModelState.AddModelError("Resolved", "Please enter Resolved");
             return ModelState.IsValid;
         }
        
