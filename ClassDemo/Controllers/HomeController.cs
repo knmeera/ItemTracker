@@ -52,6 +52,16 @@ namespace ClassDemo.Controllers
 
             return View();
         }
+
+        public ActionResult ItemsList()
+        {
+            TrackerItem ti = new TrackerItem();
+            var itms=ti.GetAll();
+
+            return View(itms);
+        }
+
+
         public ActionResult RazorForm()
         {
             ItemCategory itmCatg = new ItemCategory();
@@ -81,11 +91,13 @@ namespace ClassDemo.Controllers
                 // Success
 
                 TrackerItem ti = new TrackerItem();
+                ti.ItemId= itm.ItemId;
                 ti.ItemSummary = itm.ItemSummary;
                 ti.Add(ti);
 
 
                 ViewBag.Message = "Item has created successfully.";
+                RedirectToAction("ItemsList","Home");
             }
             else
             {
@@ -103,8 +115,6 @@ namespace ClassDemo.Controllers
 
             return View();
         }
-
-
         // this the validation method
         private bool ValidateForm(TrackerItem itm)
         {
@@ -119,7 +129,7 @@ namespace ClassDemo.Controllers
                 ModelState.AddModelError("ItemType", "Please enter ItemCategory");
             else if (itm.Priority == "0")
                 ModelState.AddModelError("Priority", "Please enter Priority");
-          else if (itm.ItemCreatedDate== null)
+            else if (itm.ItemCreatedDate== null)
                 ModelState.AddModelError("ItemCreatedDate", "Please enter Date");
             else if (itm.CreatedBy == null)
                 ModelState.AddModelError("CreatedBy", "Please enter CreatedBy");
