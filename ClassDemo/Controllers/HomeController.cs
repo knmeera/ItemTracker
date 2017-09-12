@@ -53,13 +53,13 @@ namespace ClassDemo.Controllers
             return View();
         }
 
-        //public ActionResult ItemsList()
-        //{
-        //    TrackerItem ti = new TrackerItem();
-        //    var itms=ti.GetAll();
+        public ActionResult ItemsList()
+        {
+            TrackerItem ti = new TrackerItem();
+            var itms = ti.GetAll();
 
-        //    return View(itms);
-        //}
+            return View(itms);
+        }
 
         public ActionResult ItemsLists()
         {
@@ -96,6 +96,7 @@ namespace ClassDemo.Controllers
             //var Imapct = frm["Imapct"];
             //var Resolution = frm["Resolution"];
             //var Resolved =frm["Resolved"];
+            
             if (ValidateForm(itm))
             {
                 // Success
@@ -103,6 +104,11 @@ namespace ClassDemo.Controllers
                 TrackerItem ti = new TrackerItem();
                 ti.ItemId= itm.ItemId;
                 ti.ItemSummary = itm.ItemSummary;
+                ti.ItemType = itm.ItemType;
+                //ti.ItemType = itm.ItemPriority;
+                ti.ItemStatus = itm.ItemStatus;
+                ti.ItemCreatedDate = itm.ItemCreatedDate;
+                ti.ItemEndDate = itm.ItemEndDate;
                 ti.Add(ti);
 
                 if (ModelState.IsValid)
