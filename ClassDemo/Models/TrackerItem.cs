@@ -8,7 +8,7 @@ namespace ClassDemo.Models
 
     public class TrackerItem
     {
-        List<TrackerItem> lstItems = new List<TrackerItem>();
+        private static List<TrackerItem> _context = new List<TrackerItem>();
 
         public int ItemId { set; get; }
         public string ItemSummary  { set; get; }
@@ -26,14 +26,20 @@ namespace ClassDemo.Models
 
         public List<TrackerItem> GetTrackerItems()
         {
-             return lstItems;
+             return _context;
         }
 
         public void Add(TrackerItem itm)
         {
-            lstItems.Add(itm);
+            _context.Add(itm);
 
         }
+
+        public IEnumerable<TrackerItem> GetAll()
+        {
+            return _context.ToList();
+        }
+
 
         public void Edit(TrackerItem itm)
         {
