@@ -53,22 +53,32 @@ namespace ClassDemo.Controllers
             return View();
         }
 
-        public ActionResult ItemsList()
+        //public ActionResult ItemsList()
+        //{
+        //    TrackerItem ti = new TrackerItem();
+        //    var itms=ti.GetAll();
+
+        //    return View(itms);
+        //}
+
+        public ActionResult ItemsLists()
         {
             TrackerItem ti = new TrackerItem();
-            var itms=ti.GetAll();
+            var itms = ti.GetAll();
 
             return View(itms);
         }
-
-
         public ActionResult RazorForm()
         {
             ItemCategory itmCatg = new ItemCategory();
             ItemType itmTy = new ItemType();
+            ItemStatus itmSts = new ItemStatus();
+            ItemPriority itmPry = new ItemPriority();
 
             ViewBag.CategoryVB = new SelectList(itmCatg.GetItemCategories(), "CategoryId", "CategoryName");
             ViewBag.ItemTypeVB = new SelectList(itmTy.GetItemTypes(), "ItemTypeId", "ItemName");
+            ViewBag.ItemStatusVB = new SelectList(itmSts.GetItemStatus(), "ItemStatusId", "ItemStatusName");
+            ViewBag.ItemPriorityVB = new SelectList(itmPry.GetItemPriority(), "PriorityId", "PriorityName");
 
             return View();
         }
@@ -95,9 +105,14 @@ namespace ClassDemo.Controllers
                 ti.ItemSummary = itm.ItemSummary;
                 ti.Add(ti);
 
+                if (ModelState.IsValid)
+                {
+                    ViewBag.Message = "Item has created successfully.";
+                    return RedirectToAction("ItemsList", "Home");
+                }
 
-                ViewBag.Message = "Item has created successfully.";
-                RedirectToAction("ItemsList","Home");
+                //ViewBag.Message = "Item has created successfully.";
+                //RedirectToAction("ItemsList","Home");
             }
             else
             {
@@ -108,11 +123,13 @@ namespace ClassDemo.Controllers
 
             ItemCategory itmCatg = new ItemCategory();
             ItemType itmTy = new ItemType();
-
+            ItemStatus itmSts = new ItemStatus();
+            ItemPriority itmPry = new ItemPriority();
 
             ViewBag.CategoryVB = new SelectList(itmCatg.GetItemCategories(), "CategoryId", "CategoryName");
             ViewBag.ItemTypeVB = new SelectList(itmTy.GetItemTypes(), "ItemTypeId", "ItemName");
-
+            ViewBag.ItemStatusVB = new SelectList(itmSts.GetItemStatus(), "ItemStatusId", "ItemStatusName");
+            ViewBag.ItemPriorityVB = new SelectList(itmPry.GetItemPriority(), "PriorityId", "PriorityName");
             return View();
         }
         // this the validation method
@@ -127,7 +144,7 @@ namespace ClassDemo.Controllers
                 ModelState.AddModelError("ItemCategory", "Please enter ItemCategory");
             else if (itm.ItemType == 0)
                 ModelState.AddModelError("ItemType", "Please enter ItemCategory");
-            else if (itm.Priority == "0")
+            else if (itm.ItemPriority == "0")
                 ModelState.AddModelError("Priority", "Please enter Priority");
             else if (itm.ItemCreatedDate== null)
                 ModelState.AddModelError("ItemCreatedDate", "Please enter Date");
