@@ -98,14 +98,14 @@ namespace ClassDemo.Controllers
             //var Resolution = frm["Resolution"];
             //var Resolved =frm["Resolved"];
 
-            var path = String.Empty;
+            var fileName = String.Empty;
             if (ValidateForm(itm))
             {
                 //File Validation
                 if (file != null && file.ContentLength > 0)
                 {
-                    var fileName = Path.GetFileName(file.FileName);
-                    path = Path.Combine(Server.MapPath("~/Content/upload_attachements"), fileName);
+                    fileName = Path.GetFileName(file.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Content/upload_attachements"), fileName);
                     file.SaveAs(path);
                 }
 
@@ -118,7 +118,7 @@ namespace ClassDemo.Controllers
                 ti.ItemStatus = itm.ItemStatus;
                 ti.ItemCreatedDate = itm.ItemCreatedDate;
                 ti.ItemEndDate = itm.ItemEndDate;
-                ti.AttachmentPath = path;
+                ti.AttachmentPath = fileName;
 
 
                 ti.Add(ti);
