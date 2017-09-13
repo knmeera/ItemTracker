@@ -81,119 +81,126 @@
                 <div class="col-md-2 "></div>
                 </div>
             <div class="row">
-                <div class="col-sm-2 col-md-offset-2">
-                    <p>
-                        <label for="ID">
-                            Created By:
-                        </label><br>
-                        @Html.TextBox("CreatedBy", null, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.CreatedBy)
-                    </p>
-                    
-                </div>
-                <div class="col-sm-2 ">
-                    <p>
-                        <label for="ID">
-                            Start Date:
-                        </label><br>
-                        @Html.TextBox("ItemCreatedDate", null, new { @Value = DateTime.Now.ToLocalTime(), @class = "form-control", @readonly = "null" })
-                        @Html.ValidationMessageFor(model => model.ItemCreatedDate)
-                    </p>
-
-                </div>
-                <div class="col-sm-2 ">
-                    <p>
-                        <label for="ID">
-                            End Date:
-                        </label><br>
-                        @Html.TextBox("ItemEndDate", null, new { @class = "form-control" })
-                        @*@Html.ValidationMessageFor(model => model.ItemEndDate)*@
-                    </p>
-                </div>
-                </div>
-            <div class="row">
-                <div class="col-sm-2 col-md-offset-2">
-                    <p>
-                        <label for="Type">
-                            Assigned To:
-                        </label><br>
-                        @Html.TextBox("AssignedTo", null, null, new { @class = "form-control" })
-                    </p>
-
-                </div>
-                <div class="col-sm-2 ">
-                    <p>
-                        <label for="ID">
-                            Assigned Date:
-                        </label><br>
-                        @Html.TextBox("AssignedDate", null, new { @class = "form-control" })
-                        @*@Html.ValidationMessageFor(model => model.AssignedDate)*@
-                    </p>
-
-                </div>
-                <div class="col-sm-2 ">
-                    <p>
-                        <label for="ID">
-                            % WorkCompleted:
-                        </label><br>
-                        @Html.TextBox("workCompleted", null, new { @class = "form-control", Value = "0" })
-
-                    </p>
+                <div class="table-responsive">
+                    <div class="col-md-2 col-md-offset-2"></div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-2 col-md-offset-2">
-                    <p>
-                        <label for="ID">
-                            Owner:
-                        </label><br>
-                        @Html.TextBox("Owner", null, new { @class = "form-control" })
-                        @*@Html.ValidationMessageFor(model => model.Owner)*@
-                    </p>
-
-                </div>
-                <div class="col-sm-2 ">
-                    <p>
-                        <label for="ID">
-                            Resolved:
-                        </label><br>
-                        @Html.TextBox("Resolved", null, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.Resolved)
-                    </p>
-
-                </div>
-                <div class="col-sm-2 ">
-                    <p>
-                        <label for="Type">
-                            Parent:
-                        </label><br>
-                        @Html.TextBox("Parent", null, null, new { @class = "form-control" })
-                    </p>
-                    
-                </div>
                 <div class="row">
-                    <div class="col-md-10 col-md-offset-2">
+                    <div class="col-sm-2 col-md-offset-2">
                         <p>
                             <label for="ID">
-                                Impact:
+                                Created By:
                             </label><br>
-                            @Html.TextArea("Impact", null, new { @class = "form-control", style = "width: 75%; max-width: 72%;" })
-                            @*@Html.ValidationMessageFor(model => model.Impact)*@
+                       
+                                 @Html.TextBox("CreatedBy", null, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.CreatedBy)
                         </p>
+
                     </div>
-                    <div class="col-md-2 "></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-10 col-md-offset-2">
+                    <div class="col-sm-2 ">
                         <p>
                             <label for="ID">
-                                Resolution:
+                                Start Date:
                             </label><br>
-                            @Html.TextArea("Resolution", null, new { @class = "form-control", style = "width: 75%; max-width: 72%;" })
-                            @*@Html.ValidationMessageFor(model => model.Resolution)*@
+                            @Html.TextBox("ItemCreatedDate", null, new { @Value = DateTime.Now.ToLocalTime(), @class = "form-control", @readonly = "null" })
+                            @Html.ValidationMessageFor(model => model.ItemCreatedDate)
+                        </p>
+
+                    </div>
+                    <div class="col-sm-2 ">
+                        <p>
+                            <label for="ID">
+                                End Date:
+                            </label><br>
+                            @Html.TextBox("ItemEndDate", null, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ItemEndDate)
                         </p>
                     </div>
-                    <div class="col-md-2 "></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2 col-md-offset-2">
+                        <p>
+                            <label for="Type">
+                                Assigned To:
+                            </label><br>
+                            @Html.TextBox("AssignedTo", null, null, new { @class = "form-control" })
+                        </p>
+
+                    </div>
+                    <div class="col-sm-2 ">
+                        <p>
+                            <label for="ID">
+                                Assigned Date:
+                            </label><br>
+                            @Html.TextBox("AssignedDate", null, new { @class = "form-control" })
+                            @*@Html.ValidationMessageFor(model => model.AssignedDate)*@
+                        </p>
+
+                    </div>
+                    <div class="col-sm-2 ">
+                        <p>
+                            <label for="ID">
+                                % WorkCompleted:
+                            </label><br>
+                            @Html.TextBox("workCompleted", null, new { @class = "form-control", Value = "0" })
+
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2 col-md-offset-2">
+                        <p>
+                            <label for="ID">
+                                Owner:
+                            </label><br>
+                            @Html.TextBox("Owner", null, new { @class = "form-control" })
+                            @*@Html.ValidationMessageFor(model => model.Owner)*@
+                        </p>
+
+                    </div>
+                    <div class="col-sm-2 ">
+                        <p>
+                            <label for="ID">
+                                Resolved:
+                            </label><br>
+                            @Html.TextBox("Resolved", null, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Resolved)
+                        </p>
+
+                    </div>
+                    <div class="col-sm-2 ">
+                        <p>
+                            <label for="Type">
+                                Parent:
+                            </label><br>
+                            @Html.TextBox("Parent", null, null, new { @class = "form-control" })
+                        </p>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-2">
+                            <p>
+                                <label for="ID">
+                                    Impact:
+                                </label><br>
+                                @Html.TextArea("Impact", null, new { @class = "form-control", style = "width: 75%; max-width: 72%;" })
+                                @*@Html.ValidationMessageFor(model => model.Impact)*@
+                            </p>
+                        </div>
+                        <div class="col-md-2 "></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-2">
+                            <p>
+                                <label for="ID">
+                                    Resolution:
+                                </label><br>
+                                @Html.TextArea("Resolution", null, new { @class = "form-control", style = "width: 75%; max-width: 72%;" })
+                                @*@Html.ValidationMessageFor(model => model.Resolution)*@
+                            </p>
+                        </div>
+                        <div class="col-md-2 "></div>
+                    </div>
                 </div>
             </div>
             <div class="col-md-4 col-md-offset-2">  
@@ -222,14 +229,8 @@
                 </div>
             </div>
 
-        </div>
-
+        </div>        
        
-       
-        
-          
-        </div>
-
 }
 
   
