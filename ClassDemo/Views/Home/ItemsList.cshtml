@@ -51,6 +51,13 @@
                         @Html.DisplayFor(modelItem => item.ItemEndDate)
                     </td>
                     <td>
+                        @Html.DisplayFor(modelItem => item.AttachmentPath)
+
+
+                        @*<img src="@{Model => item.AttachmentPath;}" />*@
+                    </td>
+
+                    <td>
                         @Html.ActionLink("Edit", "Edit", new { id = item.ItemId }) |
                         @Html.ActionLink("Details", "Details", new { id = item.ItemId }) |
                         @Html.ActionLink("Delete", "Delete", new { id = item.ItemId })
