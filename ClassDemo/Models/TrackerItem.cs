@@ -24,7 +24,7 @@ namespace ClassDemo.Models
         public string Owner { set; get; }
         public string Impact { set; get; }
         public string Resolution { set; get; }
-        public string Resolved { set; get; }
+        public string ResolvedDate { set; get; }
         public string AttachmentPath { set; get; }
 
 
