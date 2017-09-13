@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ClassDemo.Models;
+using System.IO;
 
 namespace ClassDemo.Controllers
 {
@@ -83,24 +84,32 @@ namespace ClassDemo.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult RazorForm(TrackerItem itm)
+        public ActionResult RazorForm(TrackerItem itm, HttpPostedFileBase file)
         {
             //var ItemCategory = frm["ItemCategory"];
-           // var CategoryId = frm["CategoryId"];
+            // var CategoryId = frm["CategoryId"];
             //var ItemTypeId = frm["ItemType"];
             //var Priority = frm["Priority"];
-            
+
             //var ItemCreatedDate = frm["ItemCreatedDate"];
             //var CreatedBy = frm["CreatedBy"];
             //var Owner = frm["Owner"];
             //var Imapct = frm["Imapct"];
             //var Resolution = frm["Resolution"];
             //var Resolved =frm["Resolved"];
-            
+
+            var path = String.Empty;
             if (ValidateForm(itm))
             {
-                // Success
+                //File Validation
+                if (file != null && file.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(file.FileName);
+                    path = Path.Combine(Server.MapPath("~/Content/upload_attachements"), fileName);
+                    file.SaveAs(path);
+                }
 
+                // After data validation Success 
                 TrackerItem ti = new TrackerItem();
                 ti.ItemId= itm.ItemId;
                 ti.ItemSummary = itm.ItemSummary;
@@ -109,6 +118,9 @@ namespace ClassDemo.Controllers
                 ti.ItemStatus = itm.ItemStatus;
                 ti.ItemCreatedDate = itm.ItemCreatedDate;
                 ti.ItemEndDate = itm.ItemEndDate;
+                ti.AttachmentPath = path;
+
+
                 ti.Add(ti);
 
                 if (ModelState.IsValid)
