@@ -1,7 +1,7 @@
 ﻿function myFunction() {
     document.getElementById("myForm").reset();
 }
-
+  
 $(function () {
     $("#AssignedDate,#ItemEndDate").datepicker({
         dateFormat: "mm-dd-yy ",
