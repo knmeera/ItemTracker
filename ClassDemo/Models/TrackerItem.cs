@@ -44,9 +44,21 @@ namespace ClassDemo.Models
             return _context.ToList();
         }
 
-
-        public void Edit(TrackerItem itm)
+        public TrackerItem GetById(int Id)
         {
+            return _context.Where(x => x.ItemId == Id).FirstOrDefault();
+        }
+
+        public void Update(TrackerItem itmEdit)
+        {
+            // Find out the Item by ItemId
+            var itm = _context.Where(x => x.ItemId == itmEdit.ItemId).FirstOrDefault();
+            if (itm != null)
+            {
+                _context.Remove(itm);
+                _context.Add(itmEdit);
+            }
+
 
         }
         public void Delete(TrackerItem itm)

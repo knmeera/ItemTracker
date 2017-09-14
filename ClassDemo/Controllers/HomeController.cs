@@ -31,7 +31,7 @@ namespace ClassDemo.Controllers
 
         public ActionResult Form1()
         {
-            return View(); 
+            return View();
         }
 
 
@@ -45,11 +45,11 @@ namespace ClassDemo.Controllers
             var gender = frm["gender"];
             var age = frm["age"];
             var mobile = frm["mobile"];
-            
-            
+
+
             var Salutation = (gender == "Male" ? "Mr" : "Miss");
             //ViewData["Message"] = "Welcome " + name;
-            ViewBag.Message= "Thank you " +Salutation +"."+ name +" " + surename +" for your form submission. We will revert you soon.";
+            ViewBag.Message = "Thank you " + Salutation + "." + name + " " + surename + " for your form submission. We will revert you soon.";
 
             return View();
         }
@@ -111,11 +111,14 @@ namespace ClassDemo.Controllers
 
                 // After data validation Success 
                 TrackerItem ti = new TrackerItem();
-                ti.ItemId= itm.ItemId;
+                ti.ItemId = itm.ItemId;
                 ti.ItemSummary = itm.ItemSummary;
+
+                ti.ItemCategory = itm.ItemCategory;
                 ti.ItemType = itm.ItemType;
-                //ti.ItemType = itm.ItemPriority;
+                ti.ItemPriority = itm.ItemPriority;
                 ti.ItemStatus = itm.ItemStatus;
+
                 ti.ItemCreatedDate = itm.ItemCreatedDate;
                 ti.ItemEndDate = itm.ItemEndDate;
                 ti.AttachmentPath = fileName;
@@ -150,6 +153,34 @@ namespace ClassDemo.Controllers
             ViewBag.ItemPriorityVB = new SelectList(itmPry.GetItemPriority(), "PriorityId", "PriorityName");
             return View();
         }
+
+        public ActionResult Edit(int ID)
+        {
+            // To be Loaded in Edit form
+            ItemCategory itmCatg = new ItemCategory();
+            ItemType itmTy = new ItemType();
+            ItemStatus itmSts = new ItemStatus();
+            ItemPriority itmPry = new ItemPriority();
+
+            TrackerItem itmObj = new TrackerItem();
+            var item = itmObj.GetById(ID);
+
+            ViewBag.CategoryVB = new SelectList(itmCatg.GetItemCategories(), "CategoryId", "CategoryName", item.ItemCategory);
+            ViewBag.ItemTypeVB = new SelectList(itmTy.GetItemTypes(), "ItemTypeId", "ItemName", item.ItemType);
+            ViewBag.ItemStatusVB = new SelectList(itmSts.GetItemStatus(), "ItemStatusId", "ItemStatusName", item.ItemStatus);
+            ViewBag.ItemPriorityVB = new SelectList(itmPry.GetItemPriority(), "PriorityId", "PriorityName", item.ItemPriority);
+
+
+            return View(item);
+        }
+        [HttpPost]
+        public ActionResult Edit(TrackerItem itm)
+        {
+            TrackerItem ti = new TrackerItem();
+            ti.Update(itm);
+            return RedirectToAction("ItemsList");
+        }
+        
         // this the validation method
         private bool ValidateForm(TrackerItem itm)
         {
