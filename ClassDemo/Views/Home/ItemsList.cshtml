@@ -51,7 +51,12 @@
                         @Html.DisplayFor(modelItem => item.ItemEndDate)
                     </td>
                     <td>
-                        <img src="@Url.Content(String.Format("~/Content/upload_attachements/{0}", item.AttachmentPath))" />
+                        @* Image Name Display *@
+                        @*@Html.DisplayFor(modelItem => item.AttachmentPath)*@
+
+                        @* Image  Display *@
+                        <img src="@Url.Content(string.Format("~/Content/upload_attachements/{0}",item.AttachmentPath))" height="150" width="150" />
+
                     </td>
 
                     <td>

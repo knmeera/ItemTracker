@@ -170,11 +170,11 @@ namespace ClassDemo.Controllers
                 ModelState.AddModelError("CreatedBy", "Please enter CreatedBy");
             else if (itm.Owner== null)
                 ModelState.AddModelError("Owner", "Please enter Owner");
-            else if (itm.Impact == null)
-                ModelState.AddModelError("Impact", "Please enter Impact");
-            else if (itm.Resolution == null)
-                ModelState.AddModelError("Resolution", "Please enter Resolution");
-            else if (itm.Resolved == null)
+            //else if (itm.Impact == null)
+            //    ModelState.AddModelError("Impact", "Please enter Impact");
+            //else if (itm.Resolution == null)
+            //    ModelState.AddModelError("Resolution", "Please enter Resolution");
+            else if (itm.ResolvedDate == null)
                 ModelState.AddModelError("Resolved", "Please enter Resolved");
             return ModelState.IsValid;
         }
