@@ -14,10 +14,11 @@ namespace ClassDemo.Models
         public List<ItemStatus> GetItemStatus()
         {
             List<ItemStatus> lstSts = new List<ItemStatus>();
-            lstSts.Add(new ItemStatus { ItemStatusId = 1, ItemStatusName = "Open" });
+            lstSts.Add(new ItemStatus { ItemStatusId = 1, ItemStatusName = "New" });
             lstSts.Add(new ItemStatus { ItemStatusId = 2, ItemStatusName = "Assigned" });
-            lstSts.Add(new ItemStatus { ItemStatusId = 3, ItemStatusName = "Resolved" });
-            lstSts.Add(new ItemStatus { ItemStatusId = 4, ItemStatusName = "Cancel" });
+            lstSts.Add(new ItemStatus { ItemStatusId = 3, ItemStatusName = "Open" });
+            lstSts.Add(new ItemStatus { ItemStatusId = 4, ItemStatusName = "Resolved" });
+            lstSts.Add(new ItemStatus { ItemStatusId = 5, ItemStatusName = "Cancel" });
             return lstSts;
         }
         
