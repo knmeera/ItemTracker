@@ -180,7 +180,46 @@ namespace ClassDemo.Controllers
             ti.Update(itm);
             return RedirectToAction("ItemsList");
         }
-        
+
+        //Standard way of deleting 
+        //public ActionResult Delete(int ID)
+        //{
+        //    TrackerItem itmObj = new TrackerItem();
+        //    var item = itmObj.GetById(ID);
+        //    if (item != null) { 
+        //    ViewBag.DeleteMessage = item.ItemId + " " + item.ItemType;
+        //    ViewBag.ItemId = item.ItemId;
+        //}
+        //    return View();
+        //}
+        //[HttpPost]
+        //public ActionResult Delete(FormCollection frm)
+        //{
+        //    TrackerItem itmObj = new TrackerItem();
+        //    var item = itmObj.GetById(Convert.ToInt32(frm["ItemId"]));
+        //    itmObj.Delete(item);
+
+        //    ViewBag.DeleteConfirmation = "Item deleted successfully  "+ item.ItemId + " " + item.ItemType;
+
+        //    return View();
+        //}
+
+
+        // Another approach of Delete using Ajax
+        public JsonResult Delete(int ID)
+        {
+            int i = 0;
+            TrackerItem itmObj = new TrackerItem();
+            var item = itmObj.GetById(ID);
+            i= itmObj.Delete(item);
+
+            if (i == 1)
+                return Json(new { message = "success" }, JsonRequestBehavior.AllowGet);
+            else
+                return Json(new { message = "failure" }, JsonRequestBehavior.AllowGet);
+        }
+
+
         // this the validation method
         private bool ValidateForm(TrackerItem itm)
         {
