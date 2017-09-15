@@ -16,9 +16,10 @@
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>Project Name</th>
                     <th>Summary</th>
-                    <th>Type</th>
                     <th>Priority</th>
+                    <th>Type</th>
                     <th>Status</th>
                     <th>CreatedDate</th>
                     <th>End Date</th>
@@ -30,16 +31,20 @@
                         @Html.DisplayFor(modelItem => item.ItemId)
                     </td>
                     <td>
+                        @Html.DisplayFor(modelItem => item.ProjectName)
+                    </td>
+                    <td>
                         @Html.DisplayFor(modelItem => item.ItemSummary)
+                    </td>
+                    
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ItemPriority)
                     </td>
 
                     <td>
                         @Html.DisplayFor(modelItem => item.ItemType)
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ItemPriority)
-
-                    </td>
+                    
                     <td>
                         @Html.DisplayFor(modelItem => item.ItemStatus)
 
@@ -61,7 +66,7 @@
 
                     <td>
                         @Html.ActionLink("Edit", "Edit", new { id = item.ItemId }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.ItemId }) |
+                        @Html.ActionLink("Details", "DetailsView", new { id = item.ItemId }) |
                         @Html.ActionLink("Delete", "Delete", new { id = item.ItemId })
                         <a href="#" onclick="return deleteItemById(@item.ItemId )">Delete</a>
                     </td>
