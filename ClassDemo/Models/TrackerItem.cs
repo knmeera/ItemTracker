@@ -11,6 +11,7 @@ namespace ClassDemo.Models
         private static List<TrackerItem> _context = new List<TrackerItem>();
 
         public int ItemId { set; get; }
+        public string ProjectName { set; get; }
         public string ItemSummary { set; get; }
         public int ItemCategory { set; get; }
         public int ItemType { set; get; }
@@ -26,7 +27,6 @@ namespace ClassDemo.Models
         public string Resolution { set; get; }
         public string ResolvedDate { set; get; }
         public string AttachmentPath { set; get; }
-        public string ProjectName { get; set; }
         public int ParentId { get; set; }
         public string AssignedTo { get; set; } 
 
