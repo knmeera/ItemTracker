@@ -16,7 +16,7 @@ namespace ClassDemo.Models
             lstty.Add(new ItemType { ItemTypeId = 1, ItemName = "Backlog" });
             lstty.Add(new ItemType { ItemTypeId = 2, ItemName = "Action" });
             lstty.Add(new ItemType { ItemTypeId = 3, ItemName = "Issue" });
-            lstty.Add(new ItemType { ItemTypeId = 3, ItemName = "Task" });
+            lstty.Add(new ItemType { ItemTypeId = 4, ItemName = "Task" });
             return lstty;
         }
 
