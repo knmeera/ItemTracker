@@ -27,6 +27,8 @@ namespace ClassDemo.Models
         public string Resolution { set; get; }
         public string ResolvedDate { set; get; }
         public string AttachmentPath { set; get; }
+        public int ParentId { get; set; }
+        public string AssignedTo { get; set; } 
 
 
         public List<TrackerItem> GetTrackerItems()
@@ -75,7 +77,10 @@ namespace ClassDemo.Models
             }
             return i;
         }
-
+        public TrackerItem details(int Id)
+        {
+            return _context.Where(m => m.ItemId == Id).FirstOrDefault();
+        }
 
 
     }

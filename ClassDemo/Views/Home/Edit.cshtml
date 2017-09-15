@@ -5,6 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@*dummycomment*@
 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 <h2>Edit Item</h2>
 
@@ -41,7 +42,7 @@
                         <label for="Type">
                             Project Name:
                         </label><br>
-                        @Html.TextBoxFor(model => model.ItemSummary , new { @class = "form-control" })
+                        @Html.TextBoxFor(model => model.ProjectName , new { @class = "form-control" })
                     </p>
                     <p>
                         <label for="Type">
