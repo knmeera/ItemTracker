@@ -59,11 +59,20 @@ namespace ClassDemo.Models
                 _context.Add(itmEdit);
             }
 
-
         }
-        public void Delete(TrackerItem itm)
+        public int Delete(TrackerItem itm)
         {
-
+            int i = 0;
+            try
+            {
+                _context.Remove(itm);
+                i = 1;
+            }
+            catch (Exception ex)
+            {
+                i = 0;
+            }
+            return i;
         }
 
 
