@@ -112,6 +112,7 @@ namespace ClassDemo.Controllers
                 // After data validation Success 
                 TrackerItem ti = new TrackerItem();
                 ti.ItemId = itm.ItemId;
+                ti.ProjectName = itm.ProjectName;
                 ti.ItemSummary = itm.ItemSummary;
 
                 ti.ItemCategory = itm.ItemCategory;
