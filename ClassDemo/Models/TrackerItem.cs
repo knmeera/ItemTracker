@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-//dummycomment
 namespace ClassDemo.Models
 {
 
