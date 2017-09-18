@@ -30,7 +30,7 @@
                         </label><br>
                         @Html.TextBox("ItemId", null, new { @class = "form-control", tabindex = 1, Value = "101" })
                         @Html.ValidationMessageFor(model => model.ItemId)
-                        
+                        <span id="itIDerr"></span>
                     </p>
                     <p>
                         <label for="Category">
@@ -38,6 +38,7 @@
                         </label><br>
                         @Html.DropDownList("ItemCategory", (IEnumerable<SelectListItem>)ViewBag.CategoryVB, new { @class = "form-control", tabindex = 3 })
                         @*@Html.DropDownList("ItemCategory", (IEnumerable<SelectListItem>)ViewBag.CategoryVB, "--Select Item Category--", new { @class = "form-control", tabindex = 3})*@
+                        <span id="cat"></span>
                     </p>
                     <p>
                         <label for="Priority">
@@ -46,6 +47,7 @@
                         @Html.DropDownList("ItemPriority", (IEnumerable<SelectListItem>)ViewBag.ItemPriorityVB, new { @class = "form-control", tabindex = 5 })
                         @*@Html.DropDownList("ItemPriority", (IEnumerable<SelectListItem>)ViewBag.ItemPriorityVB, "--Select Type--", new { @class = "form-control", tabindex = 5})*@
                         @Html.ValidationMessageFor(model => model.ItemPriority)
+                        <span id="Prio"></span>
                     </p>
                 </div>
                 <div class="col-sm-4">
@@ -54,6 +56,7 @@
                             Project Name:
                         </label><br>
                         @Html.TextBox("ProjectName", null, null, new { @class = "form-control", tabindex = 2, Value = "Item Tracker" })
+                        <span id="PN"></span>
                     </p>
                     <p>
                         <label for="Type">
@@ -61,6 +64,7 @@
                         </label><br>
                         @Html.DropDownList("ItemType", (IEnumerable<SelectListItem>)ViewBag.ItemTypeVB, new { @class = "form-control", tabindex = 4 })
                         @*@Html.DropDownList("ItemType", (IEnumerable<SelectListItem>)ViewBag.ItemTypeVB, "--Select Type--", new { @class = "form-control", tabindex = 4 })*@
+                        <span id="itmty"></span>
                     </p>
                     <p>
                         <label for="ID">
@@ -68,6 +72,7 @@
                         </label><br>
                         @Html.DropDownList("ItemStatus", (IEnumerable<SelectListItem>)ViewBag.ItemStatusVB, new { @class = "form-control", tabindex = 6})
                         @*@Html.DropDownList("ItemStatus", (IEnumerable<SelectListItem>)ViewBag.ItemStatusVB, "--Select Type--", new { @class = "form-control", tabindex = 6})*@
+                        <span id="status"></span>
                     </p>
                 </div>
             </div>
@@ -97,8 +102,8 @@
 
                         @Html.TextBox("CreatedBy", null, new { @class = "form-control", tabindex = 8, Value = "Project Manager" })
                         @Html.ValidationMessageFor(model => model.CreatedBy)
+                        <span id="creBy"></span>
                     </p>
-
                 </div>
                 <div class="col-sm-2 ">
                     <p>
@@ -116,6 +121,7 @@
                             Parent:
                         </label><br>
                         @Html.TextBox("Parent", null, null, new { @class = "form-control", Value = "0", tabindex = 9})
+                        <span id="paId"></span>
                     </p>
                 </div>
             </div>
@@ -126,8 +132,8 @@
                             Assigned To:
                         </label><br>
                         @Html.TextBox("AssignedTo", null, null, new { @class = "form-control", tabindex = 10, Value = "Developer" })
+                        <span id="assTo"></span>
                     </p>
-
                 </div>
                 <div class="col-sm-2 ">
                     <p>
@@ -136,8 +142,8 @@
                         </label><br>
                         @Html.TextBox("AssignedDate", null, new { @class = "form-control", tabindex = 11, Value = "09-15-2017" })
                         @*@Html.ValidationMessageFor(model => model.AssignedDate)*@
+                        <span id="assDate"></span>
                     </p>
-
                 </div>
                 <div class="col-sm-2 ">
                     <p>
@@ -146,8 +152,8 @@
                         </label><br>
                         @Html.TextBox("ItemEndDate", null, new { @class = "form-control", tabindex = 12, Value = "09-16-2017" })
                         @Html.ValidationMessageFor(model => model.ItemEndDate)
+                        <span id="endDate"></span>
                     </p>
-
                 </div>
             </div>
             <div class="row">
@@ -158,8 +164,8 @@
                         </label><br>
                         @Html.TextBox("Owner", null, new { @class = "form-control", tabindex = 13, Value = "NA" })
                         @*@Html.ValidationMessageFor(model => model.Owner)*@
+                        <span id="own"></span>
                     </p>
-
                 </div>
                 <div class="col-sm-2 ">
                     <p>
@@ -167,9 +173,8 @@
                             % WorkCompleted:
                         </label><br>
                         @Html.TextBox("workCompleted", null, new { @class = "form-control", Value = "0", tabindex = 14 })
-
+                        <span id="WC"></span>
                     </p>
-
                 </div>
                 <div class="col-sm-2 ">
                     <p>
@@ -178,10 +183,8 @@
                         </label><br>
                         @Html.TextBox("ResolvedDate", null, new { @class = "form-control", tabindex = 15 , Value = "09-16-2017" })
                         @Html.ValidationMessageFor(model => model.ResolvedDate)
+                        <span id="resoDate"></span>
                     </p>
-
-
-
                 </div>
                 <div class="row">
                     <div class="col-md-10 col-md-offset-2">
@@ -227,7 +230,7 @@
             </div>
             <div class="col-md-4">
                 <p>
-                    <input type="submit" value="Add" class="btn btn-primary btn-lg" tabindex=19 />&nbsp<input type="button" onclick="myFunction()" value="Reset form" class="btn btn-primary btn-lg" tabindex=20 />
+                    <input type="submit" onclick="return Validation()" value="Add" class="btn btn-primary btn-lg" tabindex=19 />&nbsp<input type="button" onclick="myFunction()" value="Reset form" class="btn btn-primary btn-lg" tabindex=20 />
                 </p>
                 <div class="col-md-4">
                     <p>
