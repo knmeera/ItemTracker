@@ -139,6 +139,7 @@ namespace ClassDemo.Controllers
 
                 ti.Add(ti);
 
+                //Add button Valid True
                 if (ModelState.IsValid)
                 {
                     ViewBag.Message = "Item has created successfully.";
