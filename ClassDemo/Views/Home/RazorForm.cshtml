@@ -111,7 +111,7 @@
                         <label for="ID">
                             Created Date:
                         </label><br>
-                        @Html.TextBox("ItemCreatedDate", null, new { @Value = DateTime.Now.ToLocalTime(), @class = "form-control", @readonly = "null" })
+                        @Html.TextBox("ItemCreatedDate", null, new { @Value = DateTime.Now.ToString("MM-dd-yyyy"), @class = "form-control", @readonly = "null" })
                         @Html.ValidationMessageFor(model => model.ItemCreatedDate)
                     </p>
 
