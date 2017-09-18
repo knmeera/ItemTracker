@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using ClassDemo.Models;
 using System.IO;
 
+//dummycomment
 namespace ClassDemo.Controllers
 {
     public class HomeController : Controller
@@ -112,18 +113,29 @@ namespace ClassDemo.Controllers
                 // After data validation Success 
                 TrackerItem ti = new TrackerItem();
                 ti.ItemId = itm.ItemId;
+
                 ti.ProjectName = itm.ProjectName;
                 ti.ItemSummary = itm.ItemSummary;
 
+
                 ti.ItemCategory = itm.ItemCategory;
-                ti.ItemType = itm.ItemType;
                 ti.ItemPriority = itm.ItemPriority;
+               
+                ti.ItemType = itm.ItemType;
                 ti.ItemStatus = itm.ItemStatus;
-
+                ti.ItemSummary = itm.ItemSummary;
+                ti.CreatedBy = itm.CreatedBy;
                 ti.ItemCreatedDate = itm.ItemCreatedDate;
+                ti.ParentId = itm.ParentId;
+                ti.AssignedTo = itm.AssignedTo;
+                ti.AssignedDate = itm.AssignedDate;
                 ti.ItemEndDate = itm.ItemEndDate;
+                ti.Owner = itm.Owner;
+                ti.WorkCompleted = itm.WorkCompleted;
+                ti.ResolvedDate = itm.ResolvedDate;
+                ti.Impact = itm.Impact;
+                ti.Resolution = itm.Resolution;
                 ti.AttachmentPath = fileName;
-
 
                 ti.Add(ti);
 
@@ -250,8 +262,21 @@ namespace ClassDemo.Controllers
                 ModelState.AddModelError("Resolved", "Please enter Resolved");
             return ModelState.IsValid;
         }
-       
-        
+
+        public ActionResult DetailsView(int Id)
+        {
+            List<TrackerItem> itm = new List<TrackerItem>();
+            TrackerItem tritm = new TrackerItem();
+            itm = tritm.GetTrackerItems();
+            TrackerItem vm = itm.Where(m => m.ItemId == Id).FirstOrDefault();
+            return View(vm);
+        }
+        [HttpPost]
+        public ActionResult DetailsView(TrackerItem vm)
+        {
+         
+            return RedirectToAction("Edit");
+        }
     }
  
 }
