@@ -70,7 +70,7 @@ namespace ClassDemo.Controllers
 
             return View(itms);
         }
-        public ActionResult RazorForm()
+        public ActionResult CreateItem()
         {
             ItemCategory itmCatg = new ItemCategory();
             ItemType itmTy = new ItemType();
@@ -85,7 +85,7 @@ namespace ClassDemo.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult RazorForm(TrackerItem itm, HttpPostedFileBase file)
+        public ActionResult CreateItem(TrackerItem itm, HttpPostedFileBase file)
         {
             //var ItemCategory = frm["ItemCategory"];
             // var CategoryId = frm["CategoryId"];
@@ -227,8 +227,11 @@ namespace ClassDemo.Controllers
             var item = itmObj.GetById(ID);
             i= itmObj.Delete(item);
 
-            if (i == 1)
-                return Json(new { message = "success" }, JsonRequestBehavior.AllowGet);
+            if
+                (i == 1) { 
+          return Json(new { message = "success" }, JsonRequestBehavior.AllowGet);
+                
+            }
             else
                 return Json(new { message = "failure" }, JsonRequestBehavior.AllowGet);
         }

@@ -6,7 +6,7 @@
 }
 
 
-<h2>Items List <span>@Html.ActionLink("Add", "RazorForm") </span></h2> 
+<h2>Items List <span>@Html.ActionLink("Add", "CreateItem") </span></h2> 
 
 <div class="container">
     <div class="table-responsive">
@@ -77,6 +77,7 @@
                         @Html.ActionLink("Edit", "Edit", new { id = item.ItemId }) |
                         @Html.ActionLink("Details", "DetailsView", new { id = item.ItemId }) |
                         @Html.ActionLink("Delete", "Delete", new { id = item.ItemId })
+                        
                         <a href="#" onclick="return deleteItemById(@item.ItemId )">Delete</a>
                     </td>
                 </tr>
