@@ -28,8 +28,11 @@ namespace ClassDemo.Models
         public string ResolvedDate { set; get; }
         public string AttachmentPath { set; get; }
         public int ParentId { get; set; }
-        public string AssignedTo { get; set; } 
+        public string AssignedTo { get; set; }
 
+        public int AllFieldNames { set; get; }
+
+        public string PC_Name { get { return System.Environment.MachineName; } }
 
         public List<TrackerItem> GetTrackerItems()
         {
